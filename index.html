@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hola Mundo Vue</title>
+</head>
+<body>
+  <span></span>
+  <br>
+  <input type="text" name="test" id="test">
+  <script>
+    const data = {
+      message: 'Hola Mundo Vue!',
+    };
+
+    const span = document.querySelector('span');
+    span.innerHTML = data.message;
+
+    const input = document.querySelector('input');
+    input.value = data.message;
+
+    input.addEventListener('keyup', (event) => {
+      data.message = event.target.value;
+      span.innerHTML = data.message;
+    });
+  </script>
+</body>
+</html>
