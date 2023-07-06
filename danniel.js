@@ -1,6 +1,11 @@
 class DannielReactive {
+  // Dependencies
+  deps = new Map();
+
   constructor(options) {
     this.origin = options.data();
+
+    const self = this;
 
     // destination
 
@@ -8,6 +13,7 @@ class DannielReactive {
       // TODO: modifica los datos dentro de js
       get(target, name) {
         if (Reflect.has(target, name)) {
+          self.track(target, name);
           return Reflect.get(target, name);
         }
         console.warn(`Propiedad ${name} no existe`);
@@ -16,8 +22,25 @@ class DannielReactive {
       set(target, name, value) {
         console.log("set", target, name, value);
         Reflect.set(target, name, value);
+        self.trigger(name);
       },
     });
+  }
+
+  track(target, name) {
+    if (!this.deps.has(name)) {
+      const effect = () => {
+        document.querySelectorAll(`*[dn-text=${name}]`).forEach((element) => {
+          this.dnText(element, target, name);
+        });
+      };
+      this.deps.set(name, effect);
+    }
+  }
+
+  trigger(name) {
+    const efect = this.deps.get(name);
+    efect();
   }
 
   mount() {
