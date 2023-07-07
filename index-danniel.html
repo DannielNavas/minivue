@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <span dn-text="message"></span>
+    <br>
+    <input type="text" name="test" id="test" dn-model="message">
+  </div>
+  <script src="./danniel.js"></script>
+  <script>
+    const {createApp} = Danniel;
+    const app = createApp({
+      data() {
+        return {
+          message: 'Hola Mundo Danniel!',
+        };
+      },
+    });
+    app.mount();
+  </script>
+</body>
+</html>

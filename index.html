@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Platzi Commerce</title>
 </head>
+
 <body>
   <div id="app">
-    <span dn-text="message"></span>
-    <br>
-    <input type="text" name="test" id="test" dn-model="message">
+    <header>
+      <h3>Platzi Commerce</h3>
+      <button class="cart">Carro (0)</button>
+      <div class="cart-content">
+        <div class="cart-content__product">
+          <img src="" alt="" />
+          <span>Producto - $ 100.00</span>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="product">
+        <div class="product__thumbnails">
+          <div class="thumb"></div>
+        </div>
+        <div class="product__image">
+          <img src="" alt="" />
+        </div>
+      </section>
+      <section class="description">
+        <h4>Producto</h4>
+        <span class="badge new">Nuevo</span>
+        <span class="badge offer">Oferta</span>
+        <p class="description__status"></p>
+        <p class="desction__price">$ 100.00</p>
+        <p class="description__content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+          dicta quis repellendus facilis unde! In enim tempora culpa dolorum
+          recusandae ipsa rem. Reiciendis et ipsum officia eius corporis sequi
+          libero.
+        </p>
+        <div class="discount">
+          <span>Código de descuento:</span>
+          <input type="text" placeholder="Ingresa tu código" />
+        </div>
+      </section>
+    </main>
   </div>
-  <script src="./danniel.js"></script>
+
+  <script src="https://unpkg.com/vue@next"></script>
   <script>
-    const {createApp} = Danniel;
-    const app = createApp({
-      data() {
-        return {
-          message: 'Hola Mundo Danniel!',
-        };
-      },
-    });
-    app.mount();
+    const { createApp } = Vue;
+    const app = createApp();
+    app.mount("#app");
   </script>
 </body>
+
 </html>
